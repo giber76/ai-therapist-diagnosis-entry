@@ -37,6 +37,10 @@ function main(): void {
   if (text.includes("\n")) {
     throw new Error("diagnosis must be a single line");
   }
+  // A diagnosis is a complete statement: it must end with a period.
+  if (!text.endsWith(".")) {
+    throw new Error("diagnosis must end with a period");
+  }
 
   const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
   mkdirSync(outDir, { recursive: true });
